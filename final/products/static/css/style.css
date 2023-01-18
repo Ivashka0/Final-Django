@@ -1590,9 +1590,18 @@ transition: all 0.3s ease-in;
 }
 #row1 {
     justify-content: center;
+    flex-direction: column;
 }
 .bl {
-    justify-content: center;
+    display: block;
+    margin: 10px 30% 5px 30%;
+    padding: 0px 10% 5px 10%;
+}
+.span_acc {
+    font-weight: 600;
+}
+.h1_acc {
+    margin: 5px 40% 10px 40%;
 }
 /** end footer **/
 /*--------------------------------------------------------------------- ener page css ---------------------------------------------------------------------*/

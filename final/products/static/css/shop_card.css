@@ -76,3 +76,19 @@
     display: block;
     margin: 15px 5% 15px 10%;
 }
+.all-bucket-block {
+    display: block;
+}
+.btn-fin {
+    margin: 10px 50% 10px 60%;
+    padding: 10px 0;
+    background: #428713;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    max-width: 200px;
+    width: 100%;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in;
+}

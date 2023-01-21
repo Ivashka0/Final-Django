@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
   <!-- basic -->
@@ -79,19 +79,32 @@
      <!-- end header inner -->
      <!-- end header -->
 </header>
+  {% if user.is_authenticated %}
+  <div class="all-bucket-block">
     <div class="list-all">
-        {% for element in busket_list %}
-            <div class="product-item">
-                    <img src="data:images/png;base64,{{ element.image_base64 }}">
-                <div class="product-list">
-                <h3>{{ element.name }}</h3>
-                    <span class="price">{{ element.price }} $</span>
-                    <a href="http://127.0.0.1:8000/delete_cart/{{ element.id }}" class="button-delete">Delete</a>
+                <div class="all-bucket-block">
+                    {% for element in busket_list %}
+                        {% if element.user == user %}
+                            <div class="product-item">
+                                    <img src="data:images/png;base64,{{ element.image_base64 }}">
+                                <div class="product-list">
+                                <h3>{{ element.name }}</h3>
+                                    <span class="price">{{ element.price }} $</span>
+                                    <a href="http://127.0.0.1:8000/delete_cart/{{ element.id }}" class="button-delete">Delete</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-            </div>
-        {% endfor %}
     </div>
+        <button class="submit btn-fin"><a href="http://127.0.0.1:8000/orders/" class="hover-a">Make a purchase</a></button>
+  </div>
+  {% else %}
+        <h1 class="sign-in-alert">Sign in for using Cart</h1>
+  {% endif %}
+
 </body>
+
 <script src="{% static 'js/jquery.min.js' %}"></script>
           <script src="{% static 'js/popper.min.js' %}"></script>
           <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

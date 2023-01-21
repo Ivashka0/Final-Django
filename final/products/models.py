@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 import base64
 
@@ -29,6 +30,7 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     description = models.TextField(max_length=1000)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -36,4 +38,4 @@ class Cart(models.Model):
     available = models.BooleanField(null=False, default=False)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} - {self.user}"

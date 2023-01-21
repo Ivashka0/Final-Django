@@ -67,9 +67,6 @@
                       <li> <a href="http://127.0.0.1:8000/#about">About us</a> </li>
                       <li> <a href="http://127.0.0.1:8000/shop/">Vegetable Shop</a> </li>
                       <li> <a href="http://127.0.0.1:8000/#contact">Contact Us</a> </li>
-                      {% if user.is_authenticated %}
-                        <li> <a href="http://127.0.0.1:8000/cart/">Cart</a> </li>
-                      {% endif %}
                      </ul>
                    </nav>
                  </div>
@@ -82,44 +79,9 @@
      <!-- end header inner -->
      <!-- end header -->
 </header>
-  <div>
-        <div class="sel">
-            <select hidden onchange="location.href=this.value">
-              <option value="http://127.0.0.1:8000/shop/">Type of product</option>
-              {% for element in categories_list %}
-                <option value="http://127.0.0.1:8000/shop/{{ element.name }}">{{ element.name }}</option>
-              {% endfor %}
-            </select>
-            <select hidden onchange="location.href=this.value">
-              <option value="http://127.0.0.1:8000/shop/">Type of sorting</option>
-              <option value="http://127.0.0.1:8000/shop/sort/cheap/">From the cheapest</option>
-              <option value="http://127.0.0.1:8000/shop/sort/expensive/">From the most expensive</option>
-            </select>
-        </div>
-    <div class="list-all">
-        {% for element in products_list %}
-            <div class="product-item">
-                    <img src="data:images/png;base64,{{ element.image_base64 }}">
-                <div class="product-list">
-                <h3>{{ element.name }}</h3>
-                    <span class="price">{{ element.price }} $</span>
-                    {% if element.available %}
-                        {% if user.is_authenticated %}
-                            <a href="http://127.0.0.1:8000/add_cart/{{ element.id }}" class="button">Add to Cart</a>
-                        {% else %}
-                            <p class="sign-in-alert">Sign in for using Cart</p>
-                        {% endif %}
-                        <br><span>Available: yes </span>
-                    {% endif %}
-                    {% if not element.available %}
-                        <br><span>Available: no </span>
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-  </div>
+<h1 class="sign-in-alert">Unavailable</h1>
 </body>
+
 <script src="{% static 'js/jquery.min.js' %}"></script>
           <script src="{% static 'js/popper.min.js' %}"></script>
           <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

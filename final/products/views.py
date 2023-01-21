@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+from django.conf import settings
 from products.models import *
 
 
@@ -45,8 +46,10 @@ def cart(request):
 
 def add_cart(request, id1):
     product = Product.objects.filter(id=id1).values()
+    print(request.user)
     try:
         _, created = Cart.objects.get_or_create(
+            user=request.user,
             name=product[0]['name'],
             description=product[0]['description'],
             price=product[0]['price'],

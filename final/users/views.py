@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views import View
 from users.forms import UserCreationForm
+from orders.models import CreditCard
 
 # Create your views here.
 
@@ -30,12 +31,14 @@ class Register(View):
         }
         return render(request, self.template_name, context)
 
+
 def start(request):
     return render(request, 'index.html')
 
 
 def account_menu(request):
-    return render(request, 'account.html')
+    context_orders = CreditCard.objects.all()
+    return render(request, 'account.html', {'user_orders': context_orders})
 
 
 def sign_menu(request):

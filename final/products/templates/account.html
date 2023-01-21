@@ -57,7 +57,6 @@
               </div>
             </div>
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-9 justify-ce">
-
                <div class="menu-area">
                 <div class="limit-box">
                   <nav class="main-menu ">
@@ -78,16 +77,38 @@
      <!-- end header inner -->
      <!-- end header -->
 </header>
-<div class="white_color">
-      <div id="row1">
-        <h1 class="h1_acc">Account Settings</h1>
-        <div class="bl">
-          <p><span class="span_acc">Name:</span> {{ user }}</p>
-          <span class="span_acc">Cart: </span><a href="http://127.0.0.1:8000/cart/">Cart</a><br>
-          <a href="{% url 'logout' %}">Logout</a>
+{% if user.is_authenticated %}
+  <div class="white_color">
+        <div id="row1">
+          <h1 class="h1_acc">Account Settings</h1>
+          <div class="bl">
+            <p><span class="span_acc">Name:</span> {{ user }}</p>
+            <span class="span_acc">Cart: </span><a href="http://127.0.0.1:8000/cart/">Cart</a><br>
+            <div>
+              <table class="orders-table"><h3 class="span_acc">My orders</h3>
+                <tr>
+                  <th class="th-header-left td-bottom">Number of order</th>
+                  <th class="th-header td-bottom">Price of order</th>
+                  <th class="th-header-right td-bottom">Status</th>
+                </tr>
+                {% for element in user_orders %}
+                       {% if element.user == user %}
+                          <tr>
+                            <td class="td-td td-bottom">{{ element.id }}</td>
+                            <td class="td-td td-border td-bottom">{{ element.sum }}$</td>
+                            <td class="td-td td-bottom">{{ element.status }}</td>
+                          </tr>
+                       {% endif %}
+                {% endfor %}
+              </table>
+            </div>
+            <span class="span_acc">Other: </span><a href="{% url 'logout' %}">Logout</a>
+          </div>
         </div>
-      </div>
-</div>
+  </div>
+{% else %}
+        <h1 class="sign-in-alert">Sign in for using Cart</h1>
+{% endif %}
     <!--  footer -->
     <footer>
       <div class="footer ">
@@ -135,6 +156,7 @@
                   <p>Copyright © 2023</p>
                 </div>
               </div>
+
             </div>
           </footer>
           <!-- end footer -->

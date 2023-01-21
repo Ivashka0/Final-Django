@@ -1594,14 +1594,70 @@ transition: all 0.3s ease-in;
 }
 .bl {
     display: block;
-    margin: 10px 30% 5px 30%;
+    margin: 10px 22% 5px 22%;
     padding: 0px 10% 5px 10%;
 }
 .span_acc {
     font-weight: 600;
+    color: #30302f;
 }
 .h1_acc {
     margin: 5px 40% 10px 40%;
+}
+.sign-in-alert {
+    color: red;
+}
+.hover-a {
+    color: white;
+}
+.hover-a: hover {
+    color: white;
+}
+.send-card {
+    font-size: 16px;
+    border: #428713 solid 1px;
+    background-color: #428713;
+    color: #fff;
+    padding: 11px 67px;
+    float: right;
+    transition: all 0.3s ease-in;
+}
+.th-header-left {
+    border-top-left-radius: 9px;
+    background-color: #d1d1d1;
+    padding: 2px 5%;
+    text-align: center;
+    width: 30%;
+}
+.th-header-right {
+    border-top-right-radius: 9px;
+    background-color: #d1d1d1;
+    padding: 2px 5%;
+    text-align: center;
+    width: 33%;
+}
+.th-header {
+    border-right: 1.5px solid #9e9e9b;
+    border-left: 1.5px solid #b5b5b1;
+    background-color: #d1d1d1;
+    padding: 2px 5%;
+    text-align: center;
+    width: 33%;
+}
+.td-td {
+    background-color: #ebebeb;
+    text-align: center;
+    padding: 2px 5%;
+}
+.td-border {
+    border-right: 1.5px solid #9e9e9b;
+    border-left: 1.5px solid #b5b5b1;
+}
+.td-bottom {
+    border-bottom: 1.5px solid #b5b5b1;
+}
+.orders-table {
+    margin: 10px 3%;
 }
 /** end footer **/
 /*--------------------------------------------------------------------- ener page css ---------------------------------------------------------------------*/
